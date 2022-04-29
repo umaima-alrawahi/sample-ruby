@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Bulid') {
             steps {
-                sh 'ruby build -o sample-ruby main.rb'
+                sh 'ruby main.rb'
             }
         }
 	stage('Save artifact'){
