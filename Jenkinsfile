@@ -2,18 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('build') {
+      stage('Requerment') {
             steps {
-                sh 'ruby main.rb'
+                sh 'gem install sinatra -v1.4.8'
             }
         }
-        
-        	stage('Run qa deployment'){
-		when {
-		   not {
-			branch 'main'
-		  }
-		}
+        stage('Build') {
+            steps {
+            sh 'ruby main.rb'
+            }
+
+        }
 	     steps{
 		build job: 'sample-ruby-deploy', parameters: [string(name: 'DEPLOY_TO', value: 'qa'),
 							 string(name: 'upstreamJobName', value: BRANCH_NAME)]
