@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Bulid') {
             steps {
-                sh 'go build -o sample main.rb'
+                sh 'go build -o sample-ruby main.rb'
             }
         }
 	stage('Save artifact'){
 		steps {
-			archiveArtifacts artifacts: 'sample', followSymlinks: false
+			archiveArtifacts artifacts: 'sample-ruby', followSymlinks: false
 		}
 	}
     }
